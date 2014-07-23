@@ -1,491 +1,410 @@
 <!DOCTYPE html>
-    <!--
-     Licensed to the Apache Software Foundation (ASF) under one
-     or more contributor license agreements.  See the NOTICE file
-     distributed with this work for additional information
-     regarding copyright ownership.  The ASF licenses this file
-     to you under the Apache License, Version 2.0 (the
-     "License"); you may not use this file except in compliance
-     with the License.  You may obtain a copy of the License at
-     
-     http://www.apache.org/licenses/LICENSE-2.0
-     
-     Unless required by applicable law or agreed to in writing,
-     software distributed under the License is distributed on an
-     "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-     specific language governing permissions and limitations
-     under the License.
-     -->
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+ 
+ http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
 <html>
-<head>
-	<title>Rate That Movie!</title>
-	<link rel="stylesheet" href="_/css/mystyles.css" /> 
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=default-width, height=default-height, target-densitydpi=device-dpi" />    
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.css" />
-	<link rel="apple-touch-icon" href="img/appicon.png" type="" />
-	<link rel="apple-touch-startup-image" href="img/splash.png" />
-	<link rel="stylesheet" href="css/structure.css" />
-	<link rel="stylesheet" href="css/index.css" />
-	<link rel="stylesheet" href="css/moviewatch.css" />
-	
-	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.js"></script>
-	<script type="text/javascript" src="cordova.js"></script>
-	<script type="text/javascript" src="js/movieRetrieval.js"></script>
-            
-</head>
+    <head>
+        <title>Rate That Movie!</title>
+        <link rel="stylesheet" href="_/css/mystyles.css" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=default-width, height=default-height, target-densitydpi=device-dpi" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.css" />
+        <link rel="apple-touch-icon" href="img/appicon.png" type="" />
+        <link rel="apple-touch-startup-image" href="img/splash.png" />
+        <!-- <link rel="stylesheet" href="css/structure.css" />
+         <link rel="stylesheet" href="css/index.css" />
+         <link rel="stylesheet" href="css/moviewatch.css" /> -->
         
-<body>
-<div data-role="page" id="home" data-theme="a">
-
-	<div data-role="header"
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.js"></script>
+        <script type="text/javascript" src="js/movieRetrieval.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        
+        
+    </head>
+    
+    <body>
+        <div data-role="page" id="home" data-theme="a">
+            
+            <div data-role="header"
                 data-position="fixed"
                 data-id="vs_header">
-		<br/>
-		<h1>Rate That Movie</h1>
-	</div><!-- /header -->
-
-	<div data-role="content">
-		<!-- pic below -->
-		<div data-role="content">
-			<img id="logo" src="img/RTMicon.png" alt="View Source Logo" />
+                <br/>
+                <h1>Rate That Movie</h1>
+            </div><!-- /header -->
+            
+            <div data-role="content">
+                <!-- pic below -->
+                <div data-role="content">
+                    <img id="logo" src="img/RTMicon.png" alt="View Source Logo" />
                 </div>
-                              
-		<div data-role="content">
-			<div>
-			<label for="search-mini">enter movie title:</label>
-			<input type="search" name="search-mini" id="search-mini" value="" data-mini="true" />
-			</div>
- 
-			<div data-role="controlgroup">
-			<a data-role="button" data-icon="arrow-r" data-iconpos="left" data-transition="slide" id="go">search</a>
-			</div>
-		    
-			<div data-role="controlgroup">
-			<a href="#help" data-role="button" data-icon="arrow-r" data-iconpos="left" data-transition="slide">help</a>
-			</div><!-- links -->
-		</div>
-	</div><!-- /content -->
-</div><!-- /page -->
-
-<!-- Start of help page -->
-<div data-role="page" id="help" data-theme="a">
-
-	<div data-role="header"
+                
+                <div data-role="content">
+                    <div>
+                        <label for="search-mini">enter movie title:</label>
+                        <input type="search" name="search-mini" id="search-mini" value="" data-mini="true" />
+                    </div>
+                    
+                    <div data-role="controlgroup">
+                        <a data-role="button" data-icon="arrow-r" data-iconpos="left" data-transition="slide" id="go">search</a>
+                    </div>
+                    
+                    <div data-role="controlgroup">
+                        <a href="#help" data-role="button" data-icon="arrow-r" data-iconpos="left" data-transition="slide">help</a>
+                    </div><!-- links -->
+                </div>
+            </div><!-- /content -->
+        </div><!-- /page -->
+        
+        <!-- Start of help page -->
+        <div data-role="page" id="help" data-theme="a">
+            
+            <div data-role="header"
                 data-position="fixed"
                 data-id="vs_header">
                 <br/>
                 <h1>Help </h1>
                 <a href="#home"
-                        id ="home-search"
-			data-icon="home"
-                        data-iconpos="notext"
-                        data-transition="slide"
-                        data-direction="reverse"
-                        >Home</a>        
-                </div> <!--end of header-->
-
-	<div data-role="content">	
-		<div data-role="contain">Help page. Hey nick, can you re-write this part? I erased the help page by accident.</div>
-		<br/>	
-	</div><!-- /content -->
-
-</div><!-- /page -->
-
-<!-- Start of second page -->
-<div data-role="page" id="results" data-theme="a">
-
-	<div data-role="header"
-                data-position="fixed"
-                data-id="vs_header">
+                    id ="home-search"
+                    data-icon="home"
+                    data-iconpos="notext"
+                    data-transition="slide"
+                    data-direction="reverse"
+                    >Home</a>
+            </div> <!--end of header-->
+            
+            <div data-role="content">
+                <div data-role="contain">Help page. Hey nick, can you re-write this part? I erased the help page by accident.</div>
                 <br/>
-                <h1>Results </h1>
-                <a href="#home"
-                        id ="home-search"
-			data-icon="home"
-                        data-iconpos="notext"
-                        data-transition="slide"
-                        data-direction="reverse"
-                        >Home</a>        
-                </div> <!--end of header-->
-
-	<div data-role="content">	
-		<style>
-                    
-                    #results #list-container {
-                        padding-top:5px;
-                        padding-left:5px;
-                        padding-right:5px;
-                    }
-                    
-                    </style>
-		    <div data-role="content">
-                    <div id="list-container" data-role="contain">
-                    
-                    <ul data-role="listview" data-inset="true" id="my-listview">
-                        
-                        <li class="result" id="movie0Link">
-                            <a href="#important" data-transition="slide">
-                            <img id="pic0"></img>
-                            <h3 id="title0"></h3>
-                            <p id="year0"></p>
-                            </a>
-                        </li>
-                        
-                        <li class="result" id="movie1Link">
-                            <a href="#important" data-transition="slide">
-                            <img id="pic1"></img>
-                            <h3 id="title1"></h3>
-                            <p id="year1"></p>
-                            </a>
-                        </li>
-                        
-                        
-                        <li class="result" id="movie2Link">
-                            <a href="#important" data-transition="slide">
-                            <img id="pic2"></img>
-                            <h3 id="title2"></h3>
-                            <p id="year2"></p>
-                            </a>
-                        </li>
-                        
-                        
-                        <li class="result" id="movie3Link">
-                            <a href="#important"  data-transition="slide">
-                            <img id="pic3"></img>
-                            <h3 id="title3"></h3>
-                            <p id="year3"></p>
-                             </a> 
-                        </li>
-                        
-                        <li class="result" id="movie4Link">
-                            <a href="#important"  data-transition="slide">
-                                <img id="pic4"></img>
-                                <h3 id="title4"></h3>
-                                <p id="year4"></p>
-                            </a>
-                        </li>
-                    </ul>
-                    </div>
-		    </div> <!-- end of container -->
-	</div><!-- /content -->
-</div><!-- /page -->
-
-<!-- Start of wrong way page -->
-<div data-role="page" id="wrong-way" data-theme="a">
-
-	<div data-role="header"
+            </div><!-- /content -->
+            
+        </div><!-- /page -->
+        
+        <!-- Start of wrong way page -->
+        <div data-role="page" id="wrong-way" data-theme="a">
+            
+            <div data-role="header"
                 data-position="fixed"
                 data-id="vs_header">
                 <br/>
                 <h1>Ooops! </h1>
                 <a href="#home"
-                        id ="home-search"
-			data-icon="home"
-                        data-iconpos="notext"
-                        data-transition="slide"
-                        data-direction="reverse"
-                        >Home</a>        
-                </div> <!--end of header-->
-
-	<div data-role="content">	
-		You seem to have not entered anything. Try entering a movie title in the search bar to rate that movie!	
-	</div><!-- /content -->
-
-</div><!-- /page -->
-
-<!-- Start of third page -->
-<div data-role="page" id="important" data-theme="a">
-
-	<div data-role="header"
+                    id ="home-search"
+                    data-icon="home"
+                    data-iconpos="notext"
+                    data-transition="slide"
+                    data-direction="reverse"
+                    >Home</a>
+            </div> <!--end of header-->
+            
+            <div data-role="content">
+                You seem to have not entered anything. Try entering a movie title in the search bar to rate that movie!
+            </div><!-- /content -->
+            
+        </div><!-- /page -->
+        
+        <!-- Start of second page -->
+        <div data-role="page" id="results" data-theme="a">
+            
+            <div data-role="header"
                 data-position="fixed"
                 data-id="vs_header">
                 <br/>
                 <h1>Results </h1>
                 <a href="#home"
-                        id ="home-search"
-			data-icon="home"
-                        data-iconpos="notext"
-                        data-transition="slide"
-                        data-direction="reverse"
-                        >Home</a>        
-                </div> <!-- /header -->
-
-	<div data-role="content">	
-		
-		<style>
+                    id ="home-search"
+                    data-icon="home"
+                    data-iconpos="notext"
+                    data-transition="slide"
+                    data-direction="reverse"
+                    >Home</a>
+            </div> <!-- /header -->
+            
+            <div data-role="content">
+                
+                <style>
                     
-            /*      #results #list-container {
-                        padding-top:5px;
-                        padding-left:5px;
-                        padding-right:5px;
-                    }*/
-                    
+                    /*      #results #list-container {
+                     padding-top:5px;
+                     padding-left:5px;
+                     padding-right:5px;
+                     }*/
+                
                     </style>
-		    <div data-role="content">
+                <div data-role="content">
                     <div id="list-container" data-role="contain">
-                    
-                    <ul data-role="listview" data-inset="true" id="my-listview">
                         
-                        <li class="result" id="movie0Link">
-                            <a href="#important" data-transition="slide">
-                            <img id="pic0"></img>
-                            <h3 id="title0"></h3>
-                            <p id="year0"></p>
-                            </a>
-                        </li>
-                        
-                        <li class="result" id="movie1Link">
-                            <a href="#important" data-transition="slide">
-                            <img id="pic1"></img>
-                            <h3 id="title1"></h3>
-                            <p id="year1"></p>
-                            </a>
-                        </li>
-                        
-                        
-                        <li class="result" id="movie2Link">
-                            <a href="#important" data-transition="slide">
-                            <img id="pic2"></img>
-                            <h3 id="title2"></h3>
-                            <p id="year2"></p>
-                            </a>
-                        </li>
-                        
-                        
-                        <li class="result" id="movie3Link">
-                            <a href="#important"  data-transition="slide">
-                            <img id="pic3"></img>
-                            <h3 id="title3"></h3>
-                            <p id="year3"></p>
-                             </a> 
-                        </li>
-                        
-                        <li class="result" id="movie4Link">
-				<a href="#important"  data-transition="slide">
-				<img id="pic4"></img>
-                                <h3 id="title4"></h3>
-                                <p id="year4"></p>
-                            </a>
-                        </li>
-                    </ul>
+                        <ul data-role="listview" data-inset="true" id="my-listview">
+                            
+                            <li class="result" id="movie0Link">
+                                <a href="#important" data-transition="slide">
+                                    <img id="pic0"></img>
+                                    <h3 id="title0"></h3>
+                                    <p id="year0"></p>
+                                </a>
+                            </li>
+                            
+                            <li class="result" id="movie1Link">
+                                <a href="#important" data-transition="slide">
+                                    <img id="pic1"></img>
+                                    <h3 id="title1"></h3>
+                                    <p id="year1"></p>
+                                </a>
+                            </li>
+                            
+                            
+                            <li class="result" id="movie2Link">
+                                <a href="#important" data-transition="slide">
+                                    <img id="pic2"></img>
+                                    <h3 id="title2"></h3>
+                                    <p id="year2"></p>
+                                </a>
+                            </li>
+                            
+                            
+                            <li class="result" id="movie3Link">
+                                <a href="#important"  data-transition="slide">
+                                    <img id="pic3"></img>
+                                    <h3 id="title3"></h3>
+                                    <p id="year3"></p>
+                                </a>
+                            </li>
+                            
+                            <li class="result" id="movie4Link">
+                                <a href="#important"  data-transition="slide">
+                                    <img id="pic4"></img>
+                                    <h3 id="title4"></h3>
+                                    <p id="year4"></p>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-		    </div> <!-- end of content -->
-	</div><!-- /content -->
-
-</div><!-- /page -->
-
-<!-- Start of fourth page -->
-<div data-role="page" id="important" data-theme="a">
-
-	<div data-role="header"
-                             data-position="fixed"
-                             data-id="vs_header">
-                        <h1>importance</h1>
-                        <a href="#home"
-                                 id="home-search"
-                                 data-icon="home"
-                                 data-iconpos="notext"
-                                 data-transition="slide"
-                                 data-direction="reverse"
-                                 >Home</a>
-                        <a  data-icon="right-arrow"
-                                 data-iconpos="notext"
-                                 data-transition="slide"
-                                 data-direction="forward"
-                                 id="hacktor"
-                                 >next</a>
-        </div><!-- /header -->
-
-	<div data-role="content">	
-		<style>
-                        
-                #important #list-container {
+                </div> <!-- end of content -->
+            </div><!-- /content -->
+            
+        </div><!-- /page -->
+        
+        <!-- Start of third page -->
+        <div data-role="page" id="important" data-theme="a">
+            
+            <div data-role="header"
+                data-position="fixed"
+                data-id="vs_header">
+                <h1>importance</h1>
+                <a href="#home"
+                    id="home-search"
+                    data-icon="home"
+                    data-iconpos="notext"
+                    data-transition="slide"
+                    data-direction="reverse"
+                    >Home</a>
+                <a  data-icon="right-arrow"
+                    data-iconpos="notext"
+                    data-transition="slide"
+                    data-direction="forward"
+                    id="hacktor"
+                    >next</a>
+            </div><!-- /header -->
+            
+            <div data-role="content">
+                <style>
+                    
+                    #important #list-container {
                         padding-top:5px;
                         padding-left:5px;
                         padding-right:5px;
                         padding-bottom:5px;
-                }
-                    
-		</style>
-		<h3>
-                        rank what is most important in a movie for you
+                    }
+                
+                    </style>
+                <h3>
+                    rank what is most important in a movie for you
                 </h3>
                 <!-- begin of choice fields -->
                 <div data-role="contain" id="important-stuff">
-                        <fieldset data-role="controlgroup" data-type="horizontal">
-                                <p>Actors</p>
-                                <input type="radio" name="radio-group" id="radio-choice-1" data-col="1" value="1" />
-                                <label for="radio-choice-1">1</label>
-                                
-                                <input type="radio" name="radio-group" id="radio-choice-2" data-col="2" value="2"  />
-                                <label for="radio-choice-2">2</label>
-                                
-                                <input type="radio" name="radio-group" id="radio-choice-3" data-col="3" value="3"  />
-                                <label for="radio-choice-3">3</label><br/>
-                        </fieldset>
-                                <p>Director</p>
-                        <fieldset data-role="controlgroup" data-type="horizontal">
-                                <input type="radio" name="radio-group2" id="radio-choice-4" data-col="1" value="1" />
-                                <label for="radio-choice-4">1</label>
-                                
-                                <input type="radio" name="radio-group2" id="radio-choice-5" data-col="2" value="2"  />
-                                <label for="radio-choice-5">2</label>
-                                
-                                <input type="radio" name="radio-group2" id="radio-choice-6" data-col="3" value="3"  />
-                                <label for="radio-choice-6">3</label><br/>
-                        </fieldset>
-                                
-                        <p>Genre</p>
-                        <fieldset data-role="controlgroup" data-type="horizontal">
-                                <input type="radio" name="radio-group3" id="radio-choice-7" data-col="1" value="1" />
-                                <label for="radio-choice-7">1</label>
-                                
-                                <input type="radio" name="radio-group3" id="radio-choice-8" data-col="2" value="2"  />
-                                <label for="radio-choice-8">2</label>
-                                
-                                <input type="radio" name="radio-group3" id="radio-choice-9" data-col="3" value="3"  />
-                                <label for="radio-choice-9">3</label>
-                        </fieldset>
+                    <fieldset data-role="controlgroup" data-type="horizontal">
+                        <p>Actors</p>
+                        <input type="radio" name="radio-group" id="radio-choice-1" data-col="1" value="1" />
+                        <label for="radio-choice-1">1</label>
+                        
+                        <input type="radio" name="radio-group" id="radio-choice-2" data-col="2" value="2"  />
+                        <label for="radio-choice-2">2</label>
+                        
+                        <input type="radio" name="radio-group" id="radio-choice-3" data-col="3" value="3"  />
+                        <label for="radio-choice-3">3</label><br/>
+                    </fieldset>
+                    <p>Director</p>
+                    <fieldset data-role="controlgroup" data-type="horizontal">
+                        <input type="radio" name="radio-group2" id="radio-choice-4" data-col="1" value="1" />
+                        <label for="radio-choice-4">1</label>
+                        
+                        <input type="radio" name="radio-group2" id="radio-choice-5" data-col="2" value="2"  />
+                        <label for="radio-choice-5">2</label>
+                        
+                        <input type="radio" name="radio-group2" id="radio-choice-6" data-col="3" value="3"  />
+                        <label for="radio-choice-6">3</label><br/>
+                    </fieldset>
+                    
+                    <p>Genre</p>
+                    <fieldset data-role="controlgroup" data-type="horizontal">
+                        <input type="radio" name="radio-group3" id="radio-choice-7" data-col="1" value="1" />
+                        <label for="radio-choice-7">1</label>
+                        
+                        <input type="radio" name="radio-group3" id="radio-choice-8" data-col="2" value="2"  />
+                        <label for="radio-choice-8">2</label>
+                        
+                        <input type="radio" name="radio-group3" id="radio-choice-9" data-col="3" value="3"  />
+                        <label for="radio-choice-9">3</label>
+                    </fieldset>
                 </div><!-- end of choice fields -->
-	</div><!-- /content -->
-</div><!-- /page -->
-
-<!-- Start of fifth page -->
-<div data-role="page" id="actor0" data-theme="a">
-
-	<div data-role="header"
-                        data-position="fixed"
-                        data-id="vs_header">
-                <h1>Rate These Actors!</h1>
-                <a href="#home"
-                            id ="screen_one"
-                            data-icon="home"
-                            data-iconpos="notext"
-                            data-transition="slide"
-                            data-direction="reverse"
-			>Home</a>
-                <a href="#genre-director"
-                            id="to_genre_director"
-                            data-icon="right-arrow"
-                            data-iconpos="notext"
-                            data-transition="slide"
-                            data-direction="forward"
-			>next</a>
-        </div> <!-- /header-->
-	
-        <div data-role="content" id="slider_stuff1">        
-		<h3>Rate these Actors</h3>		
-		<div data-role="fieldcontain">
-			<p id="label0"></p>
-			<input type="range"
-			id="actor_slider1" value="0" min="-10" max="10"
-			data-highlight="true" />
-		</div>
-		<div data-role="fieldcontain">
-			<p id="label1"></p>
-			<input type="range" name="slider-mini"
-			id="actor_slider2" value="0" min="-10" max="10"
-			data-highlight="true" />
-		</div>
-		<div data-role="fieldcontain">
-			<p id="label2"></p>
-			<input type="range" name="slider-mini"
-			id="actor_slider3" value="0" min="-10" max="10"
-			data-highlight="true" />
-		</div>
-		<div data-role="fieldcontain">
-			<p id="label3"></p>
-			<input type="range"  name="slider-mini"
-			id="actor_slider4" value="0" min="-10" max="10"
-			data-highlight="true" />
-		</div>
-	</div><!-- end of content -->
-</div><!-- /page -->
-
-<!-- Start of sixth page -->
-<div data-role="page" id="genre-director" data-theme="a">
-
-	<div data-role="header"
+            </div><!-- /content -->
+        </div><!-- /page -->
+        
+        <!-- Start of fourth page -->
+        <div data-role="page" id="actor0" data-theme="a">
+            
+            <div data-role="header"
                 data-position="fixed"
                 data-id="vs_header">
-                <br/>
-                <h1>Genre & Director</h1>
+                <h1>Rate These Actors!</h1>
                 <a href="#home"
-                        id ="screen_one"
-                        data-icon="home"
-                        data-iconpos="notext"
-                        data-transition="slide"
-                        data-direction="reverse"
-			>Home</a>
+                    id ="screen_one"
+                    data-icon="home"
+                    data-iconpos="notext"
+                    data-transition="slide"
+                    data-direction="reverse"
+                    >Home</a>
+                <a href="#genre-director"
+                    id="to_genre_director"
+                    data-icon="right-arrow"
+                    data-iconpos="notext"
+                    data-transition="slide"
+                    data-direction="forward"
+                    >next</a>
+            </div> <!-- /header-->
+            
+            <div data-role="content" id="slider_stuff1">
+                <h3>Rate these Actors</h3>
+                <div data-role="fieldcontain">
+                    <p id="label0"></p>
+                    <input type="range"
+                    id="actor_slider1" value="0" min="-10" max="10"
+                    data-highlight="true" />
+                    
+                    
+                    <p id="label1"></p>
+                    <input type="range" name="slider-mini"
+                    id="actor_slider2" value="0" min="-10" max="10"
+                    data-highlight="true" />
+                    
+                    
+                    <p id="label2"></p>
+                    <input type="range" name="slider-mini"
+                    id="actor_slider3" value="0" min="-10" max="10"
+                    data-highlight="true" />
+                    
+                    
+                    <p id="label3"></p>
+                    <input type="range"  name="slider-mini"
+                    id="actor_slider4" value="0" min="-10" max="10"
+                    data-highlight="true" />
+                </div>
+            </div><!-- end of content -->
+        </div><!-- /page -->
+        
+        <!-- Start of fifth page -->
+        <div data-role="page" id="genre-director" data-theme="a">
+            
+            <div data-role="header"
+                data-position="fixed"
+                data-id="vs_header">
+                <h1>Genre  Director</h1>
+                <a href="#home"
+                    id ="screen_one"
+                    data-icon="home"
+                    data-iconpos="notext"
+                    data-transition="slide"
+                    data-direction="reverse"
+                    >Home</a>
                 <a href="#score"
-			id="score_page"
-                        data-icon="right-arrow"
-                        data-iconpos="notext"
-                        data-transition="slide"
-                        data-direction="forward"
-                        >next</a>
-                </div> <!--end of header-->
-		     
-		<div data-role="content">
-                    <h1>rate these genres!</h3>
-                    <h3>Do you watch these type of movies? Rate them!</h3>
-                    <div data-role="fieldcontain">
-                        <p id="genre_title0"></p>
-                        <input type="range" name="slider-mini"
-			       id="genre1" value="0" min="-10" max="10"
-			       data-highlight="true" />
-                    </div>
+                    id="score_page"
+                    data-icon="right-arrow"
+                    data-iconpos="notext"
+                    data-transition="slide"
+                    data-direction="forward"
+                    >next</a>
+            </div> <!--end of header-->
+            
+            <div data-role="content">
+                <h3>rate these genres!</h3>
+                <p>Do you watch these type of movies? Rate them!</p>
+                <div data-role="fieldcontain">
+                    <p id="genre_title0"></p>
+                    <input type="range" name="slider-mini"
+                    id="genre1" value="0" min="-10" max="10"
+                    data-highlight="true" />
                     
-                    <div data-role="fieldcontain">                       
-                        <p id="genre_title1"></p>
-                        <input type="range" name="slider-mini"
-			       id="genre2" value="0" min="-10" max="10"
-			       data-highlight="true" />
-                    </div>
-                    
-                    <h3> Rate this director! </h3>
-                    <div data-role="fieldcontain">         
-                        <p id="director"></p>
-                        <input type="range" name="slider-mini"
-			       id="director_slider1" value="0" min="-10" max="10"
-			       data-highlight="true" />
-                    </div>
+                    <p id="genre_title1"></p>
+                    <input type="range" name="slider-mini"
+                    id="genre2" value="0" min="-10" max="10"
+                    data-highlight="true" />
+                </div>
+                
+                <h4> Rate this director! </h4>
+                <div data-role="fieldcontain">
+                    <p id="director"></p>
+                    <input type="range" name="slider-mini"
+                    id="director_slider1" value="0" min="-10" max="10"
+                    data-highlight="true" />
+                </div>
 		    </div> <!-- end of content -->
-</div><!-- /page -->
-
-
-<!-- Start of seventh page -->
-<div data-role="page" id="score" data-theme="a">
-
-	<div data-role="header"        
-                 data-position="fixed"
-                 data-id="vs_header">
-                 <h3>Based on your ratings...</h3>
-                 <a href="#home"
-                     id ="screen_one"
-                     data-icon="home"
-                     data-iconpos="notext"
-                     data-transition="slide"
-                     data-direction="reverse"
-                     >Home</a>
-        </div> <!--end of header-->
-             <div data-role="content">
-                 <h3>we think you should...</h3>
-                 <!-- Display words based on rating. This should all be done in movieRetrieval -->
-                 <div data-role="fieldcontain" id="see_movie">
-                     <!-- SEE this movie?? -->
-                 </div>
-                 <div id="critics_score"></div>
-                 <div id="your_score" ></div>
-                 <br/>
-                 <a data-role="button" data-icon="arrow-r" data-iconpos="left" data-transition="slide" href="#home">Search Another Movie!</a>
-             </div>
-</div><!-- /page -->
-</body>
+        </div><!-- /page -->
+        
+        
+        <!-- Start of sixth page -->
+        <div data-role="page" id="score" data-theme="a">
+            
+            <div data-role="header"        
+                data-position="fixed"
+                data-id="vs_header">
+                <h3>Based on your ratings...</h3>
+                <a href="#home"
+                    id ="screen_one"
+                    data-icon="home"
+                    data-iconpos="notext"
+                    data-transition="slide"
+                    data-direction="reverse"
+                    >Home</a>
+            </div> <!--end of header-->
+            <div data-role="content">
+                <h3>we think you should...</h3>
+                <!-- Display words based on rating. This should all be done in movieRetrieval -->
+                <div data-role="fieldcontain" id="see_movie">
+                    <!-- SEE this movie?? -->
+                </div>
+                <div id="critics_score"></div>
+                <div id="your_score" ></div>
+                <br/>
+                <a data-role="button" data-icon="arrow-r" data-iconpos="left" data-transition="slide" href="#home">Search Another Movie!</a>
+            </div>
+        </div><!-- /page -->
+    </body>
 </html>
