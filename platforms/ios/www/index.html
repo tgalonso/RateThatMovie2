@@ -26,17 +26,53 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+	
 	<link rel="apple-touch-icon" href="img/appicon.png" type="" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
 	<link rel="apple-touch-startup-image" href="img/splash.png" />
 	<link rel="stylesheet" href="css/structure.css" />
 	<link rel="stylesheet" href="css/index.css" />
-	<link rel="stylesheet" href="css/moviewatch.css" />
+    
+    <link rel="stylesheet" href="css/moviewatch.css" />
+    
 	
+    
+	<script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript">
+        // Wait for Cordova to load
+        //
+        document.addEventListener("deviceready", onDeviceReady, false);
+        
+        // Cordova is loaded and it is now safe to make calls Cordova methods
+        //
+        function onDeviceReady() {
+            checkConnection();
+        }
+    
+    function checkConnection() {
+        var networkState = navigator.connection.type;
+        
+        var states = {};
+        states[Connection.UNKNOWN]  = 'Unknown connection'; //1
+        states[Connection.ETHERNET] = 'Ethernet connection';
+        states[Connection.WIFI]     = 'WiFi connection';
+        states[Connection.CELL_2G]  = 'Cell 2G connection';
+        states[Connection.CELL_3G]  = 'Cell 3G connection';
+        states[Connection.CELL_4G]  = 'Cell 4G connection';
+        states[Connection.NONE]     = 'No network connection. Please connect to a network and try again.'; //7
+        
+        
+        if(navigator.network.connection.type === Connection.NONE) {
+            alert(states[Connection.NONE]);
+        }
+        
+    }
+	</script>
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.js"></script>
-	<script type="text/javascript" src="cordova.js"></script>
-	<script type="text/javascript" src="js/movieRetrieval.js"></script>
+    <script type="text/javascript" src="js/movieRetrieval.js"></script>
+	
+	
             
 </head>
         
@@ -97,85 +133,6 @@
 
 </div><!-- /page -->
 
-<!-- Start of second page -->
-<div data-role="page" id="results" data-theme="a">
-
-	<div data-role="header"
-                data-position="fixed"
-                data-id="vs_header">
-                <br/>
-                <h1>Results </h1>
-                <a href="#home"
-                        id ="home-search"
-			data-icon="home"
-                        data-iconpos="notext"
-                        data-transition="slide"
-                        data-direction="reverse"
-                        >Home</a>        
-                </div> <!--end of header-->
-
-	<div data-role="content">	
-		<style>
-                    
-                    #results #list-container {
-                        padding-top:5px;
-                        padding-left:5px;
-                        padding-right:5px;
-                    }
-                    
-                    </style>
-		    <div data-role="content">
-                    <div id="list-container" data-role="contain">
-                    
-                    <ul data-role="listview" data-inset="true" id="my-listview">
-                        
-                        <li class="result" id="movie0Link">
-                            <a href="#important" data-transition="slide">
-                            <img id="pic0"></img>
-                            <h3 id="title0"></h3>
-                            <p id="year0"></p>
-                            </a>
-                        </li>
-                        
-                        <li class="result" id="movie1Link">
-                            <a href="#important" data-transition="slide">
-                            <img id="pic1"></img>
-                            <h3 id="title1"></h3>
-                            <p id="year1"></p>
-                            </a>
-                        </li>
-                        
-                        
-                        <li class="result" id="movie2Link">
-                            <a href="#important" data-transition="slide">
-                            <img id="pic2"></img>
-                            <h3 id="title2"></h3>
-                            <p id="year2"></p>
-                            </a>
-                        </li>
-                        
-                        
-                        <li class="result" id="movie3Link">
-                            <a href="#important"  data-transition="slide">
-                            <img id="pic3"></img>
-                            <h3 id="title3"></h3>
-                            <p id="year3"></p>
-                             </a> 
-                        </li>
-                        
-                        <li class="result" id="movie4Link">
-                            <a href="#important"  data-transition="slide">
-                                <img id="pic4"></img>
-                                <h3 id="title4"></h3>
-                                <p id="year4"></p>
-                            </a>
-                        </li>
-                    </ul>
-                    </div>
-		    </div> <!-- end of container -->
-	</div><!-- /content -->
-</div><!-- /page -->
-
 <!-- Start of wrong way page -->
 <div data-role="page" id="wrong-way" data-theme="a">
 
@@ -199,8 +156,8 @@
 
 </div><!-- /page -->
 
-<!-- Start of third page -->
-<div data-role="page" id="important" data-theme="a">
+<!-- Start of second page -->
+<div data-role="page" id="results" data-theme="a">
 
 	<div data-role="header"
                 data-position="fixed"
@@ -280,7 +237,7 @@
 
 </div><!-- /page -->
 
-<!-- Start of fourth page -->
+<!-- Start of third page -->
 <div data-role="page" id="important" data-theme="a">
 
 	<div data-role="header"
@@ -356,7 +313,7 @@
 	</div><!-- /content -->
 </div><!-- /page -->
 
-<!-- Start of fifth page -->
+<!-- Start of fourth page -->
 <div data-role="page" id="actor0" data-theme="a">
 
 	<div data-role="header"
@@ -386,20 +343,20 @@
 			<input type="range"
 			id="actor_slider1" value="0" min="-10" max="10"
 			data-highlight="true" />
-		</div>
-		<div data-role="fieldcontain">
+		
+		
 			<p id="label1"></p>
 			<input type="range" name="slider-mini"
 			id="actor_slider2" value="0" min="-10" max="10"
 			data-highlight="true" />
-		</div>
-		<div data-role="fieldcontain">
+		
+		
 			<p id="label2"></p>
 			<input type="range" name="slider-mini"
 			id="actor_slider3" value="0" min="-10" max="10"
 			data-highlight="true" />
-		</div>
-		<div data-role="fieldcontain">
+		
+		
 			<p id="label3"></p>
 			<input type="range"  name="slider-mini"
 			id="actor_slider4" value="0" min="-10" max="10"
@@ -408,14 +365,13 @@
 	</div><!-- end of content -->
 </div><!-- /page -->
 
-<!-- Start of sixth page -->
+<!-- Start of fifth page -->
 <div data-role="page" id="genre-director" data-theme="a">
 
 	<div data-role="header"
                 data-position="fixed"
                 data-id="vs_header">
-                <br/>
-                <h1>Genre & Director</h1>
+                <h1>Genre  Director</h1>
                 <a href="#home"
                         id ="screen_one"
                         data-icon="home"
@@ -424,7 +380,7 @@
                         data-direction="reverse"
 			>Home</a>
                 <a href="#score"
-			id="score_page"
+                        id="score_page"
                         data-icon="right-arrow"
                         data-iconpos="notext"
                         data-transition="slide"
@@ -433,23 +389,21 @@
                 </div> <!--end of header-->
 		     
 		<div data-role="content">
-                    <h1>rate these genres!</h3>
-                    <h3>Do you watch these type of movies? Rate them!</h3>
+                    <h3>rate these genres!</h3>
+                    <p>Do you watch these type of movies? Rate them!</p>
                     <div data-role="fieldcontain">
                         <p id="genre_title0"></p>
                         <input type="range" name="slider-mini"
 			       id="genre1" value="0" min="-10" max="10"
 			       data-highlight="true" />
-                    </div>
-                    
-                    <div data-role="fieldcontain">                       
+   
                         <p id="genre_title1"></p>
                         <input type="range" name="slider-mini"
 			       id="genre2" value="0" min="-10" max="10"
 			       data-highlight="true" />
                     </div>
                     
-                    <h3> Rate this director! </h3>
+                    <h4> Rate this director! </h4>
                     <div data-role="fieldcontain">         
                         <p id="director"></p>
                         <input type="range" name="slider-mini"
@@ -460,7 +414,7 @@
 </div><!-- /page -->
 
 
-<!-- Start of seventh page -->
+<!-- Start of sixth page -->
 <div data-role="page" id="score" data-theme="a">
 
 	<div data-role="header"        
