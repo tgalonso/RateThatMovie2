@@ -272,13 +272,14 @@ $(document).ready(function() {
                   //here, you got all yo variables asssigned.
                   result = ((x1 * (2*x2) + x3)/10) + RT/100;
                   console.log("your score is... " + result);
-                  if (result < 60) {
+                  if (result < .60) {
                   $("#see_movie").html("<style>#color_text{color:red;}</style><p id=\"color_text\">NOT see this movie</p>");
                   }
                   else {
                   $("#see_movie").html("<style>#color_text{color:green;}</style><p id=\"color_text\">see this movie</p>");
                   }
                   $('#critics_score').html("<div>Critics score: " + RT+"</div");
-                  $('#your_score').html("<div>Your score: "+result+"</div>");
+                  display_score = (result*100);
+                  $('#your_score').html("<div>Your score: "+display_score.toFixed(2)+"</div>");
                   }
                   }); //end of jquery doc

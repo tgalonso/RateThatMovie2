@@ -211,9 +211,9 @@ var radio_group1, radio_group2, radio_group3;
             **check .sort** and then pulling out 1 2 or 3. Add priorities. 
             */
         var act_score1 = Number($('#actor_slider1').val());
-        var act_score2 = Number($('#actor_slider2').val())
-        var act_score3 = Number($('#actor_slider3').val())
-        var act_score4 = Number($('#actor_slider4').val())
+        var act_score2 = Number($('#actor_slider2').val());
+        var act_score3 = Number($('#actor_slider3').val());
+        var act_score4 = Number($('#actor_slider4').val());
         var act_average = (act_score1/10 + act_score2/10 + act_score3/10 + act_score4/10)/(4);
         console.log("actor average is " + act_average);
         var genre1 = Number($('#genre1').val());
@@ -221,7 +221,7 @@ var radio_group1, radio_group2, radio_group3;
         var genre_average = (genre1/10 + genre2/10)/2;
         console.log("genre average is " + genre_average);
         console.log("critics score is " + RT);
-        var director = Number($('#director_slider1').val())/10
+        var director = Number($('#director_slider1').val())/10;
         console.log("director is "+ director);
         var x1;
         var x2;
@@ -248,12 +248,12 @@ var radio_group1, radio_group2, radio_group3;
             x2 = act_average;
             //check 
             if (radio_group2.val() === "1") {
-                x1=director;
-                x3=genre_average;
+                x1 = director;
+                x3 = genre_average;
             }
             if (radio_group2.val()==="3") {
-                x1=genre_average;
-                x3=director;
+                x1 = genre_average;
+                x3 = director;
             }
         }
         //3,1,2 or 3,2,1
@@ -272,13 +272,13 @@ var radio_group1, radio_group2, radio_group3;
         //here, you got all yo variables asssigned.
         result = ((x1 * (2*x2) + x3)/10) + RT/100;
         console.log("your score is... " + result);
-        if (result < 60) {
+        if (result < .60) {
             $("#see_movie").html("<style>#color_text{color:red;}</style><p id=\"color_text\">NOT see this movie</p>");
         }
         else {
             $("#see_movie").html("<style>#color_text{color:green;}</style><p id=\"color_text\">see this movie</p>");
         }
         $('#critics_score').html("<div>Critics score: " + RT+"</div");
-        $('#your_score').html("<div>Your score: "+result+"</div>");
+        $('#your_score').html("<div>Your score: "+result*100+"</div>");
     }
 }); //end of jquery doc
