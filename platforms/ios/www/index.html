@@ -61,12 +61,11 @@
         states[Connection.CELL_4G]  = 'Cell 4G connection';
         states[Connection.NONE]     = 'No network connection. Please connect to a network and try again.'; //7
         
-        if(states[Connection.NONE]  == 'No network connection. Please connect to a network and try again.') {
-            alert("Connection type: " + states[networkState]);
+        
+        if(navigator.network.connection.type === Connection.NONE) {
+            alert(states[Connection.NONE]);
         }
-        else {
-            //do nothing.
-        }
+        
     }
 	</script>
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
